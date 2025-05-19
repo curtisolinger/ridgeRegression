@@ -7,22 +7,23 @@ import matplotlib.pyplot as plt
 rng = np.random.default_rng()
 rng.integers(low=1, high=20, size=4)
 
-data = {'11am': ,
-        '12pm': ,
-        '1pm': ,
-        '2pm': ,
-        '3pm': [100, 101, 150, 89],
+data = {'11am': np.array(rng.integers(low=1, high=20, size=4)),
+        '12pm': np.array(rng.integers(low=1, high=20, size=4)),
+        '1pm': np.array(rng.integers(low=1, high=20, size=4)),
+        '2pm': np.array(rng.integers(low=1, high=20, size=4)),
+        '3pm': np.array(rng.integers(low=1, high=20, size=4)),
         'flash_demand': [200, 250, 300, 120]
 }
+
 
 X = np.array(data['3pm']).reshape(4,1)
 y = np.array(data['flash_demand'])
 
 reg = LinearRegression().fit(X, y)
-
-df = pd.DataFrame(data)
+ 
+# df = pd.DataFrame(data)
 # df.plot.scatter(x='3pm', y='flash_demand')
-
+ 
 # Generate predicted values for plotting the best-fit line
 x_fit = np.linspace(np.array(data['3pm']).min(), np.array(data['3pm']).max(), 100).reshape(-1, 1) # Generate evenly spaced x values
 y_fit = reg.predict(x_fit) # Compute corresponding y values
